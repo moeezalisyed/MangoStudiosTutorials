@@ -32,6 +32,7 @@ public class TutorialGameManager : MonoBehaviour
 	private Boolean startitr;
 	public Boolean gameover = false;
 	public Boolean gamewon = false;
+	private Level1B BOSS;
 
 	private int maxEnv = 4;
 
@@ -123,6 +124,7 @@ public class TutorialGameManager : MonoBehaviour
 		Level1B boss = bossObject.AddComponent<Level1B>();
 		boss.init (this, 20);
 		boss.transform.position = new Vector3(-5,0,0);
+		BOSS = boss;
 
 		music.GetComponent<AudioSource> ().clip = bgm;
 		music.Play ();
@@ -135,6 +137,11 @@ public class TutorialGameManager : MonoBehaviour
 		clock = clock - Time.deltaTime;
 		Vector3 playerPosScreen = Camera.main.WorldToScreenPoint(currentplayer.transform.position);
 		float speed = this.charSpeed;
+
+		if (level == 2) {
+			
+		}
+
 
 		if (Input.GetKey (KeyCode.RightArrow)  && playerPosScreen.x < Screen.width -22) {
 			if (currentplayer.playerType != 2 || !currentplayer.usingability) {
@@ -238,7 +245,15 @@ public class TutorialGameManager : MonoBehaviour
 	public void ChangeLevel(int win){
 		if (win == 1) {
 			level++;
+		}
 			if (level == 1) {
+
+				for (int x = players.Count; x > 0; x--) {
+					Destroy (players [x].gameObject);
+				}
+				Destroy (currentplayer.gameObject);
+				Destroy (BOSS.gameObject);
+
 				clock = 30;
 				GameObject playerObject = new GameObject ();		
 				currentplayer = playerObject.AddComponent<Player> ();
@@ -249,24 +264,43 @@ public class TutorialGameManager : MonoBehaviour
 				Level1B boss = bossObject.AddComponent<Level1B> ();
 				boss.init (this, 20);
 				boss.transform.position = new Vector3 (-5, 0, 0);
+				BOSS = boss;
 			} else if (level == 2) {
+
+				for (int x = players.Count; x > 0; x--) {
+					Destroy (players [x].gameObject);
+				}
+				Destroy (currentplayer.gameObject);
+				Destroy (BOSS.gameObject);
 				clock = 30;
-				GameObject playerObject = new GameObject ();		
+				GameObject playerObject = new GameObject ();	
 				currentplayer = playerObject.AddComponent<Player> ();
 				currentplayer.transform.position = new Vector3 (5, -4, 0);
 				currentplayer.init (2, this);
 
-				GameObject playerObject2 = new GameObject ();		
+				GameObject playerObject2 = new GameObject ();	
+
 				Player player = playerObject.AddComponent<Player> ();
+				player.name = "Extra Player";
 				player.transform.position = new Vector3 (5, 0, 0);
+				player.transform.eulerAngles = new Vector3 (0, 0, 90);
 				player.init (0, this);
-				player.isTutorial = true;
+				players.Add (player);
+
 
 				GameObject bossObject = new GameObject ();		
 				Level1B boss = bossObject.AddComponent<Level1B> ();
 				boss.init (this, 20);
 				boss.transform.position = new Vector3 (-5, 0, 0);
+				BOSS = boss;
+
 			} else if (level == 3) {
+				for (int x = players.Count; x > 0; x--) {
+					Destroy (players [x].gameObject);
+				}
+				Destroy (currentplayer.gameObject);
+				Destroy (BOSS.gameObject);
+
 				clock = 30;
 				GameObject playerObject = new GameObject ();		
 				currentplayer = playerObject.AddComponent<Player> ();
@@ -277,20 +311,21 @@ public class TutorialGameManager : MonoBehaviour
 				Player player = playerObject.AddComponent<Player> ();
 				player.transform.position = new Vector3 (5, 0, 0);
 				player.init (0, this);
-				player.isTutorial = true;
+				players.Add (player);
 
 				GameObject playerObject3 = new GameObject ();		
 				Player player3 = playerObject.AddComponent<Player> ();
 				player3.transform.position = new Vector3 (4, 0, 0);
 				player3.init (0, this);
 				player3.isTutorial = true;
+				players.Add (player3);
 
 				GameObject bossObject = new GameObject ();		
 				Level1B boss = bossObject.AddComponent<Level1B> ();
 				boss.init (this, 20);
 				boss.transform.position = new Vector3 (-5, 0, 0);
+				BOSS = boss;
 			}
-		}
 	}
 
     private void SoundSetUp()

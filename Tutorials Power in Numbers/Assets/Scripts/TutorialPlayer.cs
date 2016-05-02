@@ -128,12 +128,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void Update(){
-		if (isTutorial) {
-			Tutorial ();
-		}
-	}
-
 
 	public void shoot(){
 		model.shoot ();
@@ -155,6 +149,9 @@ public class Player : MonoBehaviour {
 		return transform.position.y;
 	}
 
+	public void makeTutorial(){
+		isTutorial = true;
+	}
 
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -171,10 +168,6 @@ public class Player : MonoBehaviour {
 		}
 
 
-	}
-
-	public void Tutorial (){
-		this.shoot ();
 	}
 
 

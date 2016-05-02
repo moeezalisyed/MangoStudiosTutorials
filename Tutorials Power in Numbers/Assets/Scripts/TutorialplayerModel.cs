@@ -205,7 +205,20 @@ public class TutorialplayerModel : MonoBehaviour
 
 				shadowitr++;
 			}
-		
+		}
+		if (owner.isTutorial) {
+			if (clock - cdbuf > cd) {
+				if (this.firstRun) {
+					this.owner.m.PlayEffect (this.owner.m.shootClip);
+				}
+
+				GameObject bulletObject = new GameObject ();		
+				Bullet bullet = bulletObject.AddComponent<Bullet> ();
+				bullet.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y, 0);
+				bullet.transform.rotation = new Quaternion (this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z, this.transform.rotation.w);
+				bullet.init (this);
+				cdbuf = clock;
+			}
 		}
 	}
 
@@ -244,7 +257,6 @@ public class TutorialplayerModel : MonoBehaviour
 	}
 
 	public void shoot(){
-		
 		if (clock - cdbuf > cd) {
 			if (this.firstRun) {
 				this.owner.m.PlayEffect (this.owner.m.shootClip);
