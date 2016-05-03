@@ -4,12 +4,12 @@ using System.Collections;
 public class BossBeam : MonoBehaviour {
 
 	private BossBeamModel model;
-	private Boss m;
+	private tBoss m;
 	private float speed;
 	private int health;
 
 	// Use this for initialization
-	public void init (Boss boss) {
+	public void init (tBoss boss) {
 		this.name = "BossBeam";
 		m = boss;
 		speed = m.chargeSpeed*1.1f;

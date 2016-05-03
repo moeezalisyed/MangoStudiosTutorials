@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class BossShield : MonoBehaviour {
 
-	private Boss m;
+	private tBoss m;
 	private int ShieldHealth;
 	public BossShieldModel model;
 	private float clock1 = 0;
 	private float clock2;
 
 	// Use this for initialization
-	public void init (Boss owner){
+	public void init (tBoss owner){
 		this.name = "BossShield";
 
 		m = owner;

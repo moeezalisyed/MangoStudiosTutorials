@@ -5,10 +5,10 @@ public class BossBullet : MonoBehaviour {
 	
 	private BossBulletModel model;
 	private float speed;
-	private Boss owner;
+	private tBoss owner;
 
 	// Use this for initialization
-	public void init (Boss boss) {
+	public void init (tBoss boss) {
 		owner = boss;
 		this.name = "BossBullet";
 		speed = owner.chargeSpeed*1.5f;

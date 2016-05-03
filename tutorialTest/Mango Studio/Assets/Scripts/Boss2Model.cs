@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Boss2Model : MonoBehaviour {
 
-	private Boss owner;			// Pointer to the parent object.
+	private tBoss owner;			// Pointer to the parent object.
 	public Material mat;
 	private string bossTex;
 
-	public void init(Boss owner) {
+	public void init(tBoss owner) {
 		this.owner = owner;
 
 		transform.parent = owner.transform;					// Set the model's parent to the gem.

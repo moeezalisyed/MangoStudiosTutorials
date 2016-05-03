@@ -3,13 +3,13 @@ using System.Collections;
 
 public class AOE : MonoBehaviour {
 	
-	private Player t;
+	private tPlayer t;
 	private AOEModel model;
 	private float clock;
 
 
 	// Use thi s for initialization
-	public void init (Player target) {
+	public void init (tPlayer target) {
 		this.name = "AOE";
 		t = target;
 

@@ -4,13 +4,13 @@ using System.Collections;
 public class EnvVar : MonoBehaviour {
 
 	public EnvVarModel model;
-	private GameManager owner;
+	private GameController owner;
 
 	private int health;
 	
 
 	// Use this for initialization
-	public void init (GameManager m) {
+	public void init (GameController m) {
 		owner = m;
 		this.name = "EnvVar";
 		this.health = 5;

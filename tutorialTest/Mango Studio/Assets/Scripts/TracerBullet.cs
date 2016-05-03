@@ -3,14 +3,14 @@ using System.Collections;
 
 public class TracerBullet : MonoBehaviour {
 
-	private Player t;
-	private Boss m;
+	private tPlayer t;
+	private tBoss m;
 	private float speed;
 	private TracerBulletModel model;
 	private float clock;
 
 	// Use this for initialization
-	public void init (Player target, Boss owner) {
+	public void init (tPlayer target, tBoss owner) {
 		this.name = "TracerBullet";
 		t = target;
 		m = owner;

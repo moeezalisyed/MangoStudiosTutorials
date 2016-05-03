@@ -4,11 +4,11 @@ using System.Collections;
 public class BossBlades : MonoBehaviour {
 
 	private BossBladesModel model;
-	private Boss m;
+	private tBoss m;
 	private float clock;
 
 	// Use this for initialization
-	public void init (Boss owner) {
+	public void init (tBoss owner) {
 		this.name = "BossBlade";
 		m = owner;
 
