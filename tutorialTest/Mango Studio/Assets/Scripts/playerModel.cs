@@ -92,17 +92,17 @@ public class playerModel : MonoBehaviour
 
 	void Update(){
 
-		float z = transform.position.z;
-		if (this.owner.playerType != 0) {
-			if (this.owner.playerType == 1) {
-				this.transform.position = new Vector3 (3, +0.65f, z);
-			} else {
-				this.transform.position = new Vector3 (4, -0.65f, z);
-			}
-		} else {
-//			float y = transform.position.y;
-//			this.transform.position = new Vector3 (2, y, z);
-		}
+//		float z = transform.position.z;
+//		if (this.owner.playerType != 0) {
+//			if (this.owner.playerType == 1) {
+//				this.transform.position = new Vector3 (3, +0.65f, z);
+//			} else {
+//				this.transform.position = new Vector3 (4, -0.65f, z);
+//			}
+//		} else {
+////			float y = transform.position.y;
+////			this.transform.position = new Vector3 (2, y, z);
+//		}
 		//this.owner.GetComponent<BoxCollider2D> ().size = transform.localScale;
 
 		// Kinda funky world wrapping - commented out for now!
@@ -163,7 +163,7 @@ public class playerModel : MonoBehaviour
 		if (firstRun) {
 			shadowMovements.Add (this.transform.position);
 			this.owner.GetComponent<BoxCollider2D> ().transform.position = transform.position;
-			if (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.W)||Input.GetKeyDown (KeyCode.S)||Input.GetKeyDown (KeyCode.D)) {
+			if (Input.GetKey (KeyCode.A)||Input.GetKey (KeyCode.W)||Input.GetKey (KeyCode.S)||Input.GetKey (KeyCode.D)) {
 				shadowFiring.Add (true);
 			} else {
 				shadowFiring.Add (false);
@@ -259,7 +259,12 @@ public class playerModel : MonoBehaviour
 			if (firstRun) {
 				if (healthval == 0 || this.owner.timeIndex == 0 ) {
 					//this.mat.colo r = Color.black;
-					this.owner.initDead (transform.position.x, transform.position.y, 4);
+					//this.owner.initDead (transform.position.x, transform.position.y, 4);
+					this.owner.m.THEBOSS.initDead();
+					foreach (Player x in this.owner.m.shadowPlayers) {
+						x.model.shadowitr = 0;
+						x.model.healthval = 5;
+					}
 				}
 				StopCoroutine (this.owner.usingabil ());
 				this.owner.endLifeStopPowerUp ();

@@ -469,7 +469,7 @@ public class Boss : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.name == "Bullet") {
-			this.dealDamage (2);
+			this.dealDamage (4);
 			//if (this.bossType == 1) {
 			m.PlayEffect (bossHit);
 
@@ -484,7 +484,7 @@ public class Boss : MonoBehaviour {
 
 
 			print("Did special damage");
-			this.dealDamage (4);
+			this.dealDamage (8);
 		//	if (this.bossType == 1) {
 			m.PlayEffect (bossHitX);
 			this.initHit (this.transform.position.x, this.transform.position.y, 3);

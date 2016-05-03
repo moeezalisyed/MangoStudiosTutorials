@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 	public float cdA= 0f;	//cooldown length for ability
 	public float clock;	// to keep track of the time(not used for now)
 	private float damageclock = .7f;
-	public int playerTimeOut = 30;
+	public int playerTimeOut = 10;
 	public int timeIndex;
 	public void init(int playerType, GameManager m) {
 		this.usingcircpowerup = false;
@@ -232,6 +232,8 @@ public class Player : MonoBehaviour {
 			timeIndex--;
 			if (timeIndex < 2 && this.m.THEBOSS.bossHealth > 30) {
 				timeIndex = secs;
+				this.m.THEBOSS.bossHealth = 100;
+				this.m.THEBOSS.dealDamage (0);
 
 			}
 			if (this.m.THEBOSS.bossHealth <= 10) {

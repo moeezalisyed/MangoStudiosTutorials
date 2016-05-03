@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
 		players = new List<Player> ();
 		shadowPlayers = new List<Player> ();
 		envVariables = new List<EnvVar> ();
-		createInitialEnv ();
+		//createInitialEnv ();
 		playerOrderIndex = 0;
 		addPlayer(playerOrder[playerOrderIndex], 1, -4, -4);
 		playerOrderIndex++;
@@ -325,7 +325,9 @@ public class GameManager : MonoBehaviour
 			//this.gamewon = true;				
 //			The commented bit below is for multiple levels and bosses - still working through the code for this ******* MOEEZ
 			if (this.bossCurrentLife > this.bossTotalLives) {
-				this.gamewon = true;
+				if (this.playerOrderIndex > 2) {
+					this.gamewon = true;
+				}
 			} else {
 				//got here
 //				print("Defeated one boss");
