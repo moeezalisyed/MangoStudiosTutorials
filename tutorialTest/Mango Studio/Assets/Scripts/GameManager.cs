@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 	public Boss THEBOSS;
 	public Boolean gameover = false;
 	public Boolean gamewon = false;
+	public int score = 36000;
 
 	//A list for the environment variables
 	public List<EnvVar> envVariables = new List<EnvVar>();
@@ -85,6 +86,12 @@ public class GameManager : MonoBehaviour
 	public Texture bar9;
 	public Texture bar10;
     public Texture tutorialText;
+	public Texture diamondins;
+	public Texture circleins;
+	public Texture squareins;
+	public Texture squareab;
+	public Texture circleab;
+	public Texture diamondab;
 
 
 	// These are the readonly CD Functions
@@ -127,6 +134,7 @@ public class GameManager : MonoBehaviour
 
     // Use this for initialization
     void Start(){
+		score = 36000;
 		Camera.main.backgroundColor = Color.black;
 		music.GetComponent<AudioSource> ().clip = bgm;
 		music.Play ();
@@ -317,8 +325,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+		if (!this.gamewon && !this.gameover) {
+			score -= (int)Mathf.Floor (100 * Time.deltaTime);
+		}
 
 
 		if (this.gamewon == false && THEBOSS.bossHealth <= 0) {
@@ -781,6 +790,21 @@ public class GameManager : MonoBehaviour
 //		if(GUI.Button(new Rect((Screen.width- 100, Screen.height - 200, 500, 20), "Reset")) {
 //			Application.
 //		}
+			//GUI.Box(new Rect (10, 5, 200, 100), scoreText);
+			//GUI.Box(new Rect (10, 40, 200, 100), "" + score);
+
+			if (!this.gamewon && !this.gameover) {
+				if (currentplayer.playerType == 0) {
+					GUI.Box (new Rect (50, Screen.height-120, 200, 30), squareins);
+					GUI.Box (new Rect (50, Screen.height-150, 150, 30), squareab);
+				} else if (currentplayer.playerType == 1) {
+					GUI.Box (new Rect (50, Screen.height-120, 200, 30), circleins);
+					GUI.Box (new Rect (50, Screen.height-150, 250, 30), circleab);
+				} else {
+					GUI.Box (new Rect (50, Screen.height-120, 200, 30), diamondins);
+					GUI.Box (new Rect (50, Screen.height-150, 200, 30), diamondab);
+				}
+			}
 
 			if (this.currentplayer.model.healthval > 3) {			
 				GUI.color = Color.green;
@@ -796,8 +820,7 @@ public class GameManager : MonoBehaviour
 				ss += "I";
 
 			}
-
-			/*GUI.Box(new Rect (10, 5, 200, 100), "Player: \n " + ss);*/
+				
 
 			GUI.color = Color.white;
 			GUI.skin.box.fontSize = 12;
