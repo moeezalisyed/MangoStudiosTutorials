@@ -17,7 +17,7 @@ public class playerModel : MonoBehaviour
 	//private float damagebuf;
 	public float cd;
 	public float cdbuf;
-	public	float cdbufA= 0f;		//time until ability cooldown is over
+	public	float cdbufA= -8.5f;		//time until ability cooldown is over
 	public float cdA= 0f;	//cooldown length for ability
 
 
@@ -333,8 +333,8 @@ public class playerModel : MonoBehaviour
 
 	void OnGUI(){
 		if (this.firstRun) {
-			GUI.Box (new Rect (470, 28, 200, 33), cooldownText);
-			GUI.Box (new Rect (730, 28, 200, 33), specialText);
+			GUI.Box (new Rect (420, 28, 200, 33), cooldownText);
+			GUI.Box (new Rect (650, 28, 200, 33), specialText);
 			GUI.color = Color.yellow;
 			GUI.skin.box.alignment = TextAnchor.MiddleLeft;
 			GUI.skin.box.fontSize = 25;
@@ -350,7 +350,7 @@ public class playerModel : MonoBehaviour
 			//print ("Cooldwon: " + index);
 			if (index > 0) {
 				//GUI.Box (new Rect (490, 28, 200, 33), cooldownText);
-				GUI.Box (new Rect (470, 55, 200, 50), Resources.Load<Texture>("Textures/bar"+index));
+				GUI.Box (new Rect (420, 55, 200, 50), Resources.Load<Texture>("Textures/bar"+index));
 			}
 			GUI.color = Color.white;
 			GUI.skin.box.fontSize = 12;
@@ -363,7 +363,7 @@ public class playerModel : MonoBehaviour
 //			for (int i = 0; i < ((owner.cdA - owner.clock + owner.cdbufA)  * 10); i++) {
 //				p += "I";
 //			}
-			int index2 = (int)((owner.cdA - owner.clock + owner.cdbufA)  * 10);
+			int index2 = (int)(((owner.cdA - owner.clock + owner.cdbufA)  * 10)/7);
 			if (index2 > 10) {
 				index2 = 10;
 			} 
@@ -371,7 +371,7 @@ public class playerModel : MonoBehaviour
 
 			if (index2 > 0) {
 				//GUI.Box (new Rect (730, 28, 200, 33), specialText);
-				GUI.Box (new Rect (730, 55, 200, 50), Resources.Load<Texture> ("Textures/bar" + index2));
+				GUI.Box (new Rect (650, 55, 200, 50), Resources.Load<Texture> ("Textures/bar" + index2));
 			}
 
 			int timeind1 = this.owner.timeIndex % 10;

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 	public Boss THEBOSS;
 	public Boolean gameover = false;
 	public Boolean gamewon = false;
-	public int score = 36000;
+	//public int score = 36000;
 
 	//A list for the environment variables
 	public List<EnvVar> envVariables = new List<EnvVar>();
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     // Use this for initialization
     void Start(){
-		score = 36000;
+		//score = 36000;
 		Camera.main.backgroundColor = Color.black;
 		music.GetComponent<AudioSource> ().clip = bgm;
 		music.Play ();
@@ -325,11 +325,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (!this.gamewon && !this.gameover) {
-			score -= (int)Mathf.Floor (100 * Time.deltaTime);
-		}
-
-
 		if (this.gamewon == false && THEBOSS.bossHealth <= 0) {
 			//this.gamewon = true;				
 //			The commented bit below is for multiple levels and bosses - still working through the code for this ******* MOEEZ
@@ -790,8 +785,25 @@ public class GameManager : MonoBehaviour
 //		if(GUI.Button(new Rect((Screen.width- 100, Screen.height - 200, 500, 20), "Reset")) {
 //			Application.
 //		}
-			//GUI.Box(new Rect (10, 5, 200, 100), scoreText);
-			//GUI.Box(new Rect (10, 40, 200, 100), "" + score);
+			/*GUI.Box(new Rect (1100, 28, 200, 33), scoreText);
+			int s1 = score / 10000;
+			int s2 = (score-10000*s1 )/ 1000;
+			int s3 = (score-10000*s1-1000*s2 )/ 100;
+			int s4 = (score-10000*s1-1000*s2 -100*s3) / 10;
+			int s5 = score-10000*s1-1000*s2 -100*s3-10*s4;
+			if (score >= 10000) {
+				GUI.Box (new Rect (1050, 58, 40, 40), Resources.Load<Texture> ("Textures/number" + s1));
+			}
+			if (score >= 1000) {
+				GUI.Box (new Rect (1080, 58, 40, 40), Resources.Load<Texture> ("Textures/number" + s2));
+			}
+			if (score >= 100) {
+				GUI.Box (new Rect (1110, 58, 40, 40), Resources.Load<Texture> ("Textures/number" + s3));
+			}
+			if (score >= 10) {
+				GUI.Box (new Rect (1140, 58, 40, 40), Resources.Load<Texture> ("Textures/number" + s4));
+			}
+			GUI.Box (new Rect (1170, 58, 40, 40), Resources.Load<Texture>("Textures/number"+s5));*/
 
 			if (!this.gamewon && !this.gameover) {
 				if (currentplayer.playerType == 0) {
@@ -830,20 +842,20 @@ public class GameManager : MonoBehaviour
 		if (this.playerOrderIndex < playerLives) {
 			GUI.skin.box.alignment = TextAnchor.LowerCenter;
 			GUI.skin.box.fontSize = 22;
-			GUI.Box (new Rect (970, 22, 100, 38), nextUpText);
+			GUI.Box (new Rect (900, 25, 110, 34), nextUpText);
 
 			int nextType = playerOrder [playerOrderIndex];
 			if (nextType == 0) {
-				GUI.Box (new Rect (995, 60, 50, 50), this.forSq);
+				GUI.Box (new Rect (925, 60, 50, 50), this.forSq);
 			} else if (nextType == 1) {
-				GUI.Box (new Rect (995, 60, 50, 50), this.forC);
+				GUI.Box (new Rect (925, 60, 50, 50), this.forC);
 			} else if (nextType == 2) {
-				GUI.Box (new Rect (995, 60, 50, 50), this.forT);
+				GUI.Box (new Rect (925, 60, 50, 50), this.forT);
 			}
 		}else {
 				//GUI.color = Color.red;
 				GUI.skin.box.fontSize = 22;
-			GUI.Box(new Rect (970, 19, 100, 40), lastLifeText);
+			GUI.Box(new Rect (900, 19, 100, 40), lastLifeText);
 
 
 		
